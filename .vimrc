@@ -25,6 +25,8 @@ Plugin 'fatih/vim-go'
 Plugin 'moll/vim-node'
 Plugin 'klen/python-mode'
 Plugin 'valloric/youcompleteme'
+Plugin 'ruby-vim/ruby-vim'
+
 call vundle#end()
 filetype plugin indent on
 " Vim5 and later versions support syntax highlighting. Uncommenting the next
