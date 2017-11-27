@@ -13,9 +13,20 @@
 " NOTE: debian.vim sets 'nocompatible'.  Setting 'compatible' changes numerous
 " options, so any other options should be set AFTER setting 'compatible'.
 set nocompatible
+filetype off 
 
-call pathogen#infect()
+" Get Vundle
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
 
+Plugin 'tpope/vim-bundler'
+Plugin 'fatih/vim-go'
+Plugin 'moll/vim-node'
+Plugin 'klen/python-mode'
+Plugin 'valloric/youcompleteme'
+call vundle#end()
+filetype plugin indent on
 " Vim5 and later versions support syntax highlighting. Uncommenting the next
 " line enables syntax highlighting by default.
 syntax on
