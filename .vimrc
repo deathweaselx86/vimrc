@@ -1,19 +1,5 @@
-" All system-wide defaults are set in $VIMRUNTIME/debian.vim (usually just
-" /usr/share/vim/vimcurrent/debian.vim) and sourced by the call to :runtime
-" you can find below.  If you wish to change any of those settings, you should
-" do it in this file (/etc/vim/vimrc), since debian.vim will be overwritten
-" everytime an upgrade of the vim packages is performed.  It is recommended to
-" make changes after sourcing debian.vim since it alters the value of the
-" 'compatible' option.
-
-" This line should not be removed as it ensures that various options are
-" properly set to work with the Vim-related packages available in Debian.
-
-" Uncomment the next line to make Vim more Vi-compatible
-" NOTE: debian.vim sets 'nocompatible'.  Setting 'compatible' changes numerous
-" options, so any other options should be set AFTER setting 'compatible'.
+" No one likes standard vi
 set nocompatible
-filetype off 
 
 " Get Vundle
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -21,62 +7,46 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'tpope/vim-bundler'
-Plugin 'fatih/vim-go'
-Plugin 'moll/vim-node'
 Plugin 'klen/python-mode'
 Plugin 'valloric/youcompleteme'
-Plugin 'ruby-vim/ruby-vim'
+Plugin 'vim-scripts/indentpython.vim'
 
 call vundle#end()
-filetype plugin indent on
 " Vim5 and later versions support syntax highlighting. Uncommenting the next
 " line enables syntax highlighting by default.
 syntax on
 
-" If using a dark background within the editing area and syntax highlighting
-" turn on this option as well
-set background=dark
-
-" Uncomment the following to have Vim jump to the last position when
-" reopening a file
-"if has("autocmd")
-"  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
-"    \| exe "normal g'\"" | endif
-"endif
-
 " Uncomment the following to have Vim load indentation rules according to the
 " detected filetype. Per default Debian Vim only load filetype specific
 " plugins.
-"if has("autocmd")
-"  filetype indent on
-"endif
-
+filetype on  
+filetype indent on
 filetype plugin on
+
+if has("autocmd")
+  autocmd FileType python autocmd BufWritePre <buffer> %s/\s+$//e
+endif
+
 
 " The following are commented out as they cause vim to behave a lot
 " differently from regular Vi. They are highly recommended though.
 set showcmd		" Show (partial) command in status line.
 set showmatch		" Show matching brackets.
-"set ignorecase		" Do case insensitive matching
 set smartcase		" Do smart case matching
-"set incsearch		" Incremental search
-"set autowrite		" Automatically save before commands like :next and :make
-"set hidden             " Hide buffers when they are abandoned
-"set mouse=a		" Enable mouse usage (all modes) in terminals
-
-" Source a global configuration file if available
-" XXX Deprecated, please move your changes here in /etc/vim/vimrc
-if filereadable("/etc/vim/vimrc.local")
-  source /etc/vim/vimrc.local
-endif
-
+set incsearch		" Incremental search
+set number
+set background=dark
 set expandtab
-set textwidth=0
-"set tabstop=4
-"set softtabstop=4
-"set shiftwidth=4
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
 set autoindent
+set fileformat=unix
 set smarttab
 set viminfo='100,<100,s10,h
-filetype indent on
-filetype on
+set colorcolumn=120 " everyone else here uses intellij products
+set textwidth=119 
+set wrap
+set linebreak
+" Next explicitly shows linebreaks
+set showbreak=>\ \ \ 
