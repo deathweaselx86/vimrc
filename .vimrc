@@ -6,10 +6,9 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
-Plugin 'tpope/vim-bundler'
+Plugin 'itchyny/lightline.vim'
 Plugin 'klen/python-mode'
 Plugin 'valloric/youcompleteme'
-Plugin 'vim-scripts/indentpython.vim'
 
 call vundle#end()
 " Vim5 and later versions support syntax highlighting. Uncommenting the next
