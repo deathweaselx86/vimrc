@@ -1,16 +1,8 @@
 " No one likes standard vi
 set nocompatible
 
-" Get Vundle
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
+execute pathogen#infect()
 
-Plugin 'itchyny/lightline.vim'
-Plugin 'klen/python-mode'
-Plugin 'valloric/youcompleteme'
-
-call vundle#end()
 " Vim5 and later versions support syntax highlighting. Uncommenting the next
 " line enables syntax highlighting by default.
 syntax on
@@ -49,3 +41,26 @@ set wrap
 set linebreak
 " Next explicitly shows linebreaks
 set showbreak=>\ \ \ 
+
+
+" Monolith whitespace BS
+autocmd BufNewFile,BufRead,BufEnter /Users/jross/repos/optimizely/* set nowrap tabstop=2 shiftwidth=2
+
+" Pymode config
+let g:pymode_trim_whitespaces = 1
+let g:pymode_options_max_line_length = 120
+let g:pymode_options_colorcolumn = 1
+
+let g:pymode_indent = 1
+let g:pymode_virtualenv = 1
+let g:pymode_lint_on_write = 1
+
+let g:pymode_syntax = 1
+
+
+" Pyrope
+let g:pymode_rope = 1
+
+" autocompletion
+let g:pymode_rope_completion = 1
+let g:pymode_rope_complete_on_dot = 1
